@@ -24,7 +24,7 @@ class LocationController extends Controller
      */
     public function create()
     {
-        //
+        return view('locations.create');
     }
 
     /**
@@ -52,7 +52,8 @@ class LocationController extends Controller
      */
     public function show(Location $location)
     {
-        //
+        $data = Location::find($location)->first();
+        return $data;
     }
 
     /**
@@ -63,7 +64,8 @@ class LocationController extends Controller
      */
     public function edit(Location $location)
     {
-        //
+        $data = Location::find($location)->first();
+        return view('locations.edit')->with('location', $data);
     }
 
     /**
@@ -75,7 +77,13 @@ class LocationController extends Controller
      */
     public function update(Request $request, Location $location)
     {
-        //
+        $data = Location::find($location)->first();
+        $data->nama_objek = $request->nama_objek;
+        $data->latitude = $request->latitude;
+        $data->longitude = $request->longitude;
+        $data->save();
+
+        return $data;
     }
 
     /**
@@ -86,6 +94,9 @@ class LocationController extends Controller
      */
     public function destroy(Location $location)
     {
-        //
+        $data = Location::find($location)->first();
+        $data->delete();
+
+        return "Oke";
     }
 }
