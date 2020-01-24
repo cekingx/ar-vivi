@@ -20,3 +20,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('location', 'LocationController');
+
+Route::get('/upload', 'UploadWtoController@create')->name('upload.create');
+Route::post('/upload', 'UploadWtoController@store')->name('upload.store');
