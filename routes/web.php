@@ -23,3 +23,4 @@ Route::resource('location', 'LocationController');
 
 Route::get('/upload', 'UploadWtoController@create')->name('upload.create');
 Route::post('/upload', 'UploadWtoController@store')->name('upload.store');
+Route::get('/download', 'UploadWtoController@serve')->name('upload.serve');
