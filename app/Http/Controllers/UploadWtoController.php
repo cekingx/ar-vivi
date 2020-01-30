@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\Storage;
 
 class UploadWtoController extends Controller
 {
+    public function index() {
+        return view('pages.wto.index');
+    }
+
     public function create() {
         return view('upload.create');
     }
