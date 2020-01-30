@@ -14,7 +14,8 @@ class LocationController extends Controller
      */
     public function index()
     {
-        return Location::all();
+        $data = Location::all();
+        return view('pages.location.index')->with('data', $data);
     }
 
     /**
@@ -24,7 +25,8 @@ class LocationController extends Controller
      */
     public function create()
     {
-        return view('locations.create');
+        // return view('locations.create');
+        return view('pages.location.create');
     }
 
     /**
@@ -41,7 +43,7 @@ class LocationController extends Controller
         $location->longitude = $request->longitude;
         $location->save();
 
-        return $location;
+        return redirect()->route('location.index');
     }
 
     /**
@@ -83,7 +85,7 @@ class LocationController extends Controller
         $data->longitude = $request->longitude;
         $data->save();
 
-        return $data;
+        return redirect()->route('location.index');
     }
 
     /**
@@ -97,6 +99,6 @@ class LocationController extends Controller
         $data = Location::find($location)->first();
         $data->delete();
 
-        return "Oke";
+        return redirect()->route('location.index');
     }
 }

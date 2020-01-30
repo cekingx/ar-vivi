@@ -15,15 +15,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dasboard', function() {
-    return view('sb-admin');
+Route::get('/dashboard', 'DashboardController@index')->middleware('auth');
+
+Route::middleware('auth')->group(function() {
+    Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+    Route::resource('location', 'LocationController');
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-Route::resource('location', 'LocationController');
 
 Route::get('/upload', 'UploadWtoController@create')->name('upload.create');
 Route::post('/upload', 'UploadWtoController@store')->name('upload.store');
