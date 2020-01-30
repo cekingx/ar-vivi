@@ -35,26 +35,30 @@
           </thead>
           <tbody>
             @foreach ($data as $index => $lokasi)    
-            <tr>
-              <td>{{ $index + 1 }}</td>
-              <td>{{ $lokasi->nama_objek }}</td>
-              <td>{{ $lokasi->latitude }}</td>
-              <td>{{ $lokasi->longitude }}</td>
-              <td>
-                <a href="{{ route('location.edit', ['location' => $lokasi->id]) }}" class="btn btn-warning">
-                  <i class="fas fa-edit"></i>
-                  <span>Edit</span>
-                </a>
-                <form action="{{ route('location.destroy', ['location' => $lokasi->id]) }}" method="post">
-                  @csrf
-                  <input type="hidden" name="_method" value="delete">
-                  <button type="submit" class="btn btn-danger">
-                    <i class="fas fa-trash-alt"></i>
-                    <span>Delete</span>
-                  </button>
-                </form>
-              </td>
-            </tr>
+              <tr>
+                <td>{{ $index + 1 }}</td>
+                <td>
+                  <a href="{{ route('location.show', ['location' => $lokasi->id]) }}">
+                    {{ $lokasi->nama_objek }}
+                  </a>
+                </td>
+                <td>{{ $lokasi->latitude }}</td>
+                <td>{{ $lokasi->longitude }}</td>
+                <td>
+                  <a href="{{ route('location.edit', ['location' => $lokasi->id]) }}" class="btn btn-warning">
+                    <i class="fas fa-edit"></i>
+                    <span>Edit</span>
+                  </a>
+                  <form action="{{ route('location.destroy', ['location' => $lokasi->id]) }}" method="post">
+                    @csrf
+                    <input type="hidden" name="_method" value="delete">
+                    <button type="submit" class="btn btn-danger">
+                      <i class="fas fa-trash-alt"></i>
+                      <span>Delete</span>
+                    </button>
+                  </form>
+                </td>
+              </tr>
             @endforeach
           </tbody>
         </table>

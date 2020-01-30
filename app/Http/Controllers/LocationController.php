@@ -55,7 +55,7 @@ class LocationController extends Controller
     public function show(Location $location)
     {
         $data = Location::find($location)->first();
-        return $data;
+        return view('pages.location.show')->with('lokasi', $data);
     }
 
     /**
@@ -67,7 +67,8 @@ class LocationController extends Controller
     public function edit(Location $location)
     {
         $data = Location::find($location)->first();
-        return view('locations.edit')->with('location', $data);
+        // return view('locations.edit')->with('location', $data);
+        return view('pages.location.edit')->with('location', $data);
     }
 
     /**
