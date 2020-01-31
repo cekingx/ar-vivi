@@ -8,23 +8,26 @@ use Illuminate\Support\Facades\Storage;
 class UploadWtoController extends Controller
 {
     public function index() {
-        return view('pages.wto.index');
+        $url = Storage::disk('gcs')->url('wto/taman_ayun.wto');
+        $data = ['url' => $url];
+        return view('pages.wto.index')->with('data', $url);
     }
 
     public function create() {
-        return view('upload.create');
+        return view('pages.wto.create');
     }
 
     public function store(Request $request) {
-        $file = $request->file('image');
+        $file = $request->file('wto_file');
         // dd($file->getCLientOriginalName());
         // Storage::disk('gcs')->put('test1', $file);
-        Storage::disk('gcs')->putFileAs('test1', $file, $file->getCLientOriginalName());
+        Storage::disk('gcs')->putFileAs('wto', $file, $file->getCLientOriginalName());
+        return redirect()->route('wto.index');
         // dd($file);
     }
 
     public function serve() {
-        $url = Storage::disk('gcs')->url('test1/file.pdf');
+        $url = Storage::disk('gcs')->url('wto/taman_ayun.wto');
         $data = ['url' => $url];
         return $data;
     }

@@ -27,7 +27,7 @@
 
     <a href="{{ route('location.index') }}" class="btn btn-primary">
       <i class="fas fa-arrow-left"></i>
-      <span>Dashboard</span>
+      <span>Back</span>
     </a>
   </form>
 

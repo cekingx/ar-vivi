@@ -7,7 +7,18 @@
 @section('content')
 <div class="container">
 
-  <h1>Under Construction</h1>
+  <h1>WTO file</h1>
+
+  <form>
+    <div class="form-group row">
+      <div class="col-sm-2">Link</div>
+      <div class="col-sm-10">{{ $data }}</div>
+    </div>
+
+    <a href="{{ route('upload.create') }}" class="btn btn-warning">
+      <span>Update</span>
+    </a>
+  </form>
 
 </div>
 @endsection
