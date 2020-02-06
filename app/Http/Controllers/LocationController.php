@@ -102,4 +102,8 @@ class LocationController extends Controller
 
         return redirect()->route('location.index');
     }
+
+    public function api() {
+        return Location::all();
+    }
 }
