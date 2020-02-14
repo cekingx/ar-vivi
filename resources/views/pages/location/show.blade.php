@@ -12,9 +12,14 @@
   <form>
     <div class="form-group row">
       <div class="col-sm-2">Nama Objek</div>
-      <div class="col-sm-10">{{ $lokasi->nama_objek }}</div>
+      <div class="col-sm-10">{{ $lokasi->name }}</div>
     </div>
     
+    <div class="form-group row">
+      <div class="col-sm-2">Deskripsi</div>
+      <div class="col-sm-10">{{ $lokasi->description }}</div>
+    </div>
+
     <div class="form-group row">
       <div class="col-sm-2">Latitude</div>
       <div class="col-sm-10">{{ $lokasi->latitude }}</div>

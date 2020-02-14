@@ -28,6 +28,7 @@
             <tr>
               <th>No</th>
               <th>Name</th>
+              <th>Description</th>
               <th>Latitude</th>
               <th>Longitude</th>
               <th>Action</th>
@@ -39,9 +40,10 @@
                 <td>{{ $index + 1 }}</td>
                 <td>
                   <a href="{{ route('location.show', ['location' => $lokasi->id]) }}">
-                    {{ $lokasi->nama_objek }}
+                    {{ $lokasi->name }}
                   </a>
                 </td>
+                <td>{{ $lokasi->description }}</td>
                 <td>{{ $lokasi->latitude }}</td>
                 <td>{{ $lokasi->longitude }}</td>
                 <td>

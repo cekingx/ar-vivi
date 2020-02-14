@@ -12,9 +12,16 @@
   <form action="{{route('location.store')}}" method="post">
     @csrf
     <div class="form-group row">
-      <label for="nama_objek" class="col-sm-2 col-form-label">Nama Objek</label>
+      <label for="name" class="col-sm-2 col-form-label">Nama Objek</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" id="nama_objek" name="nama_objek">
+        <input type="text" class="form-control" id="name" name="name">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="description" class="col-sm-2 col-form-label">Deskripsi</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="description" name="description">
       </div>
     </div>
 

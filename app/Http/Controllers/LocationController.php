@@ -38,7 +38,8 @@ class LocationController extends Controller
     public function store(Request $request)
     {
         $location = new Location;
-        $location->nama_objek = $request->nama_objek;
+        $location->name = $request->name;
+        $location->description = $request->description;
         $location->latitude = $request->latitude;
         $location->longitude = $request->longitude;
         $location->save();
@@ -81,7 +82,8 @@ class LocationController extends Controller
     public function update(Request $request, Location $location)
     {
         $data = Location::find($location)->first();
-        $data->nama_objek = $request->nama_objek;
+        $data->name = $request->name;
+        $data->description = $request->description;
         $data->latitude = $request->latitude;
         $data->longitude = $request->longitude;
         $data->save();
