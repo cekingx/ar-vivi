@@ -20,6 +20,7 @@ Route::get('/dashboard', 'DashboardController@index')->middleware('auth');
 Route::middleware('auth')->group(function() {
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
     Route::resource('location', 'LocationController');
+    Route::put('/location/verify/{location}', 'LocationController@verifyLocation')->name('location.verify');
     Route::get('/wtofile', 'UploadWtoController@index')->name('wto.index');
 });
 

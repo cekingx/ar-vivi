@@ -37,11 +37,17 @@ class LocationController extends Controller
      */
     public function store(Request $request)
     {
-        $location = new Location;
-        $location->name = $request->name;
-        $location->description = $request->description;
-        $location->latitude = $request->latitude;
-        $location->longitude = $request->longitude;
+        $location = Location::make(
+            $request->only([
+                'name',
+                'description',
+                'latitude',
+                'longitude'
+            ])
+        );
+
+        $location->verified = true;
+        $location->image = "xxx";
         $location->save();
 
         return redirect()->route('location.index');
@@ -105,7 +111,34 @@ class LocationController extends Controller
         return redirect()->route('location.index');
     }
 
+    public function storeByUser(Request $request)
+    {
+        $location = Location::make(
+            $request->only([
+                'name',
+                'description',
+                'latitude',
+                'longitude'
+            ])
+        );
+
+        $location->verified = false;
+        $location->image = "xxx";
+        $location->save();
+
+        return redirect()->route('location.index');
+    }
+
+    public function verifyLocation(Location $location) {
+        $data = Location::find($location)->first();
+        $data->verified = true;
+        // dd($data);
+        $data->save();
+
+        return redirect()->route('location.index');
+    }
+
     public function api() {
-        return Location::all();
+        return Location::where('verified', true)->get();
     }
 }

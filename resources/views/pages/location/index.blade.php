@@ -31,6 +31,7 @@
               <th>Description</th>
               <th>Latitude</th>
               <th>Longitude</th>
+              <th>Verify</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -47,6 +48,22 @@
                 <td>{{ $lokasi->latitude }}</td>
                 <td>{{ $lokasi->longitude }}</td>
                 <td>
+                  @if ($lokasi->verified == 1)
+                    Verified
+                  @else
+                    Not Verified  
+                  @endif
+                </td>
+                <td>
+                  @if ($lokasi->verified == 0)
+                    <button 
+                      class="btn btn-success" 
+                      onclick="event.preventDefault();
+                      document.getElementById('verify-location{{$lokasi->id}}').submit();"
+                    >
+                      Verify
+                    </button>
+                  @endif
                   <a href="{{ route('location.edit', ['location' => $lokasi->id]) }}" class="btn btn-warning">
                     <i class="fas fa-edit"></i>
                     <span>Edit</span>
@@ -61,6 +78,15 @@
                   </form>
                 </td>
               </tr>
+              <form 
+                action="{{ route('location.verify', ['location' => $lokasi->id]) }}" 
+                id="verify-location{{$lokasi->id}}" 
+                method="post" 
+                style="display: none;"
+              >
+                @csrf
+                <input type="hidden" name="_method" value="put">
+              </form>
             @endforeach
           </tbody>
         </table>
