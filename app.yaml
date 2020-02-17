@@ -1,0 +1,23 @@
+runtime: php72
+
+handlers:
+  - url: /(.*\.(gif|png|jpg|css|js))$
+    static_files: public/\1
+    upload: public/.*\.(gif|png|jpg|css|js)$
+
+  - url: /.*
+    secure: always
+    redirect_http_response_code: 301
+    script: auto
+
+env_variables:
+  ## Put production environment variables here.
+  APP_KEY: base64:9XvYKJ8PlUCzMO+Tjpg/hobR+v9wxGAZOW6RydNBjbI=
+  APP_STORAGE: /tmp
+  VIEW_COMPILED_PATH: /tmp
+  SESSION_DRIVER: cookie
+  APP_NAME: ARCEVI
+  DB_DATABASE: ar-vivi
+  DB_USERNAME: root
+  DB_PASSWORD: root
+  DB_SOCKET: /cloudsql/ar-vivi-2020:asia-southeast1:ar-vivi-db

@@ -46,7 +46,7 @@ class LocationController extends Controller
             ])
         );
 
-        $location->verified = true;
+        $location->verified = 'verified';
         $location->image = "xxx";
         $location->save();
 
@@ -76,6 +76,7 @@ class LocationController extends Controller
         $data = Location::find($location)->first();
         // return view('locations.edit')->with('location', $data);
         return view('pages.location.edit')->with('location', $data);
+        // dd($data);
     }
 
     /**
@@ -122,7 +123,7 @@ class LocationController extends Controller
             ])
         );
 
-        $location->verified = false;
+        $location->verified = 'unverified';
         $location->image = "xxx";
         $location->save();
 
@@ -131,7 +132,7 @@ class LocationController extends Controller
 
     public function verifyLocation(Location $location) {
         $data = Location::find($location)->first();
-        $data->verified = true;
+        $data->verified = 'verified';
         // dd($data);
         $data->save();
 
@@ -139,6 +140,6 @@ class LocationController extends Controller
     }
 
     public function api() {
-        return Location::where('verified', true)->get();
+        return Location::where('verified', 'verified')->get();
     }
 }

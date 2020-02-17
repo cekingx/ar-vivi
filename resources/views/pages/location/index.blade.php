@@ -48,14 +48,14 @@
                 <td>{{ $lokasi->latitude }}</td>
                 <td>{{ $lokasi->longitude }}</td>
                 <td>
-                  @if ($lokasi->verified == 1)
+                  @if ($lokasi->verified == 'verified')
                     Verified
                   @else
                     Not Verified  
                   @endif
                 </td>
                 <td>
-                  @if ($lokasi->verified == 0)
+                  @if ($lokasi->verified == 'unverified')
                     <button 
                       class="btn btn-success" 
                       onclick="event.preventDefault();

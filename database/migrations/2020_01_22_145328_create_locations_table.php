@@ -20,7 +20,7 @@ class CreateLocationsTable extends Migration
             $table->decimal('latitude', 10, 8);
             $table->decimal('longitude', 11, 8);
             $table->decimal('altitude', 4, 1)->default(100);
-            $table->boolean('verified');
+            $table->enum('verified', ['verified', 'unverified']);
             $table->string('image', 255);
             $table->timestamps();
         });
