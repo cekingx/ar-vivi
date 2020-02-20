@@ -24,8 +24,9 @@ Route::middleware('auth')->group(function() {
     Route::get('/wtofile', 'UploadWtoController@index')->name('wto.index');
 });
 
-Route::get('/user-location', 'LocationController@createByUser')->name('user-location.create');
-Route::post('/user-location', 'LocationController@storeByUser')->name('user-location.store');
+Route::get('user-location', 'UserLocationController@index')->name('user-location.index');
+Route::get('/user-location/create', 'UserLocationController@create')->name('user-location.create');
+Route::post('/user-location', 'UserLocationController@store')->name('user-location.store');
 
 Auth::routes();
 

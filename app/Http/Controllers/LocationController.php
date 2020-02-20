@@ -112,28 +112,6 @@ class LocationController extends Controller
         return redirect()->route('location.index');
     }
 
-    public function createByUser() {
-        return view('pages.location.create_by_user');
-    }
-
-    public function storeByUser(Request $request)
-    {
-        $location = Location::make(
-            $request->only([
-                'name',
-                'description',
-                'latitude',
-                'longitude'
-            ])
-        );
-
-        $location->verified = 'unverified';
-        $location->image = "xxx";
-        $location->save();
-
-        return 'Oke';
-    }
-
     public function verifyLocation(Location $location) {
         $data = Location::find($location)->first();
         $data->verified = 'verified';
