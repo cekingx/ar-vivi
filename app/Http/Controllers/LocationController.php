@@ -112,6 +112,10 @@ class LocationController extends Controller
         return redirect()->route('location.index');
     }
 
+    public function createByUser() {
+        return view('pages.location.create_by_user');
+    }
+
     public function storeByUser(Request $request)
     {
         $location = Location::make(
@@ -127,7 +131,7 @@ class LocationController extends Controller
         $location->image = "xxx";
         $location->save();
 
-        return redirect()->route('location.index');
+        return 'Oke';
     }
 
     public function verifyLocation(Location $location) {
