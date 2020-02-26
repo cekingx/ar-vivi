@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\UserLocation;
 use App\Location;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class UserLocationController extends Controller
      */
     public function index()
     {
-        return view('pages.user-location.dashboard');
+        $data = UserLocation::all();
+        return view('pages.user-location.index')->with('data', $data);
     }
 
     /**
@@ -35,16 +37,18 @@ class UserLocationController extends Controller
      */
     public function store(Request $request)
     {
-        $location = Location::make(
+        $location = UserLocation::make(
             $request->only([
-                'name',
+                'owner',
+                'phone',
+                'email',
+                'nama_tempat',
                 'description',
                 'latitude',
                 'longitude'
             ])
         );
 
-        $location->verified = 'unverified';
         $location->image = "xxx";
         $location->save();
 
@@ -57,9 +61,10 @@ class UserLocationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(UserLocation $user_location)
     {
-        //
+        $data = UserLocation::find($user_location)->first();
+        return $data;
     }
 
     /**
@@ -68,7 +73,7 @@ class UserLocationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(UserLocation $user_location)
     {
         //
     }
@@ -80,7 +85,7 @@ class UserLocationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, UserLocation $user_location)
     {
         //
     }
@@ -91,8 +96,22 @@ class UserLocationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(UserLocation $user_location)
     {
         //
+    }
+
+    public function verify(UserLocation $user_location) {
+        $data = UserLocation::find($user_location)->first();
+
+        $location = [
+            'name' => $data->nama_tempat,
+            'description' => $data->description,
+            'latitude' => $data->latitude,
+            'longitude' => $data->longitude,
+            'image' => $data->image
+        ];
+
+        Location::create($location);
     }
 }

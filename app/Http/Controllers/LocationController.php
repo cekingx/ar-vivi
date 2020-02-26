@@ -46,7 +46,6 @@ class LocationController extends Controller
             ])
         );
 
-        $location->verified = 'verified';
         $location->image = "xxx";
         $location->save();
 
@@ -112,14 +111,14 @@ class LocationController extends Controller
         return redirect()->route('location.index');
     }
 
-    public function verifyLocation(Location $location) {
-        $data = Location::find($location)->first();
-        $data->verified = 'verified';
-        // dd($data);
-        $data->save();
+    // public function verifyLocation(Location $location) {
+    //     $data = Location::find($location)->first();
+    //     $data->verified = 'verified';
+    //     // dd($data);
+    //     $data->save();
 
-        return redirect()->route('location.index');
-    }
+    //     return redirect()->route('location.index');
+    // }
 
     public function api() {
         return Location::where('verified', 'verified')->get();

@@ -4,14 +4,16 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Location extends Model
+class UserLocation extends Model
 {
     protected $fillable = [
-        'name', 
+        'owner', 
+        'phone', 
+        'email', 
+        'nama_tempat', 
         'description', 
         'latitude', 
         'longitude', 
-        'altitude', 
         'image'
     ];
 }

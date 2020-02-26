@@ -8,7 +8,7 @@
 <div class="container-fluid">
 
   <!-- Page Heading -->
-  <h1 class="h3 mb-2 text-gray-800">Tables</h1>
+  <h1 class="h3 mb-2 text-gray-800">User Location</h1>
   <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p>
 
   <!-- DataTales Example -->
@@ -27,8 +27,11 @@
           <thead>
             <tr>
               <th>No</th>
-              <th>Name</th>
-              <th>Description</th>
+              <th>Owner</th>
+              <th>Phone</th>
+              <th>Email</th>
+              <th>Nama Tempat</th>
+              <th>Deskripsi</th>
               <th>Latitude</th>
               <th>Longitude</th>
               <th>Action</th>
@@ -38,29 +41,53 @@
             @foreach ($data as $index => $lokasi)    
               <tr>
                 <td>{{ $index + 1 }}</td>
-                <td>
-                  <a href="{{ route('location.show', ['location' => $lokasi->id]) }}">
-                    {{ $lokasi->name }}
-                  </a>
-                </td>
+                <td>{{ $lokasi->owner }}</td>
+                <td>{{ $lokasi->phone }}</td>
+                <td>{{ $lokasi->email }}</td>
+                <td>{{ $lokasi->nama_tempat }}</td>
                 <td>{{ $lokasi->description }}</td>
                 <td>{{ $lokasi->latitude }}</td>
                 <td>{{ $lokasi->longitude }}</td>
                 <td>
-                  <a href="{{ route('location.edit', ['location' => $lokasi->id]) }}" class="btn btn-warning">
-                    <i class="fas fa-edit"></i>
-                    <span>Edit</span>
-                  </a>
-                  <form action="{{ route('location.destroy', ['location' => $lokasi->id]) }}" method="post">
-                    @csrf
-                    <input type="hidden" name="_method" value="delete">
-                    <button type="submit" class="btn btn-danger">
-                      <i class="fas fa-trash-alt"></i>
-                      <span>Delete</span>
-                    </button>
-                  </form>
+                  <button 
+                    class="btn btn-success" 
+                    onclick="event.preventDefault();
+                    document.getElementById('verify-location{{$lokasi->id}}').submit();"
+                  >
+                    Verify
+                  </button>
+
+                  <button 
+                    class="btn btn-danger" 
+                    onclick="event.preventDefault();
+                    document.getElementById('delete-location{{$lokasi->id}}').submit();"
+                  >
+                    <i class="fas fa-trash-alt"></i>
+                    <span>Delete</span>
+                  </button>
+                  
                 </td>
               </tr>
+              {{-- Verification --}}
+              <form 
+                action="{{ route('user-location.verify', ['user_location' => $lokasi->id]) }}" 
+                id="verify-location{{$lokasi->id}}" 
+                method="post" 
+                style="display: none;"
+              >
+                @csrf
+              </form>
+
+              {{-- Delete --}}
+              <form 
+                action="{{ route('user-location.delete', ['user_location' => $lokasi->id]) }}" 
+                id="delete-location{{$lokasi->id}}" 
+                method="post" 
+                style="display: none;"
+              >
+                @csrf
+                <input type="hidden" name="_method" value="delete">
+              </form>
             @endforeach
           </tbody>
         </table>
