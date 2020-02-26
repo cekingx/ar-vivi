@@ -121,6 +121,6 @@ class LocationController extends Controller
     // }
 
     public function api() {
-        return Location::where('verified', 'verified')->get();
+        return Location::all();
     }
 }

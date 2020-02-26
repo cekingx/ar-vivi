@@ -30,13 +30,13 @@
   <!-- Nav Item - Pages Collapse Menu -->
 
   <!-- Nav Item - Charts -->
-  <li class="nav-item active">
+  <li class="nav-item">
     <a class="nav-link" href="{{ route('location.index') }}">
       <i class="fas fa-fw fa-map-marker-alt"></i>
       <span>Location</span></a>
   </li>
 
-  <li class="nav-item">
+  <li class="nav-item active">
     <a class="nav-link" href="{{ route('user-location.index') }}">
       <i class="fas fa-fw fa-map-marker-alt"></i>
       <span>User Location</span></a>

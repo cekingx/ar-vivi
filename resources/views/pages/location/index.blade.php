@@ -51,16 +51,27 @@
                     <i class="fas fa-edit"></i>
                     <span>Edit</span>
                   </a>
-                  <form action="{{ route('location.destroy', ['location' => $lokasi->id]) }}" method="post">
-                    @csrf
-                    <input type="hidden" name="_method" value="delete">
-                    <button type="submit" class="btn btn-danger">
-                      <i class="fas fa-trash-alt"></i>
-                      <span>Delete</span>
-                    </button>
-                  </form>
+                  <button 
+                    class="btn btn-danger" 
+                    onclick="event.preventDefault();
+                    document.getElementById('delete-location{{$lokasi->id}}').submit();"
+                  >
+                    <i class="fas fa-trash-alt"></i>
+                    <span>Delete</span>
+                  </button>
                 </td>
               </tr>
+
+              {{-- Delete --}}
+              <form 
+                action="{{ route('location.destroy', ['location' => $lokasi->id]) }}" 
+                id="delete-location{{$lokasi->id}}" 
+                method="post" 
+                style="display: none;"
+              >
+                @csrf
+                <input type="hidden" name="_method" value="delete">
+              </form>
             @endforeach
           </tbody>
         </table>

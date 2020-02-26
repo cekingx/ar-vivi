@@ -52,7 +52,7 @@ class UserLocationController extends Controller
         $location->image = "xxx";
         $location->save();
 
-        return redirect()->route('user-location.index');
+        return redirect()->route('user-location.create')->with('status', 'Data berhasil disimpan');
     }
 
     /**
@@ -98,7 +98,10 @@ class UserLocationController extends Controller
      */
     public function destroy(UserLocation $user_location)
     {
-        //
+        $data = UserLocation::find($user_location)->first();
+        $data->delete();
+
+        return redirect()->route('user-location.index')->with('delete', 'Data dihapus');
     }
 
     public function verify(UserLocation $user_location) {
@@ -113,5 +116,8 @@ class UserLocationController extends Controller
         ];
 
         Location::create($location);
+        $data->delete();
+
+        return redirect()->route('user-location.index')->with('status', 'Sukses Verifikasi');
     }
 }

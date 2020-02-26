@@ -17,6 +17,9 @@ Route::get('/', function () {
 
 Route::get('/dashboard', 'DashboardController@index')->middleware('auth');
 
+Route::get('/user-location/create', 'UserLocationController@create')->name('user-location.create');
+Route::post('/user-location', 'UserLocationController@store')->name('user-location.store');
+
 Route::middleware('auth')->group(function() {
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
     Route::resource('location', 'LocationController');
@@ -30,8 +33,7 @@ Route::middleware('auth')->group(function() {
 });
 
 // Route::resource('user-location', 'UserLocationController');
-Route::get('/user-location/create', 'UserLocationController@create')->name('user-location.create');
-Route::post('/user-location', 'UserLocationController@store')->name('user-location.store');
+
 
 Auth::routes();
 
