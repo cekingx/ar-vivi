@@ -16,8 +16,8 @@ env_variables:
   APP_STORAGE: /tmp
   VIEW_COMPILED_PATH: /tmp
   SESSION_DRIVER: cookie
-  APP_NAME: ARCEVI
-  DB_DATABASE: ar-vivi
+  APP_NAME: "Taman Ayun"
+  DB_DATABASE: ar_vivi
   DB_USERNAME: root
-  DB_PASSWORD: root
-  DB_SOCKET: /cloudsql/ar-vivi-2020:asia-southeast1:ar-vivi-db
+  DB_PASSWORD: ar-vivi2020
+  DB_SOCKET: /cloudsql/ar-vivi-2020:asia-southeast1:arcevi
