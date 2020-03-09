@@ -1,0 +1,26 @@
+runtime: php72
+
+handlers:
+  - url: /(.*\.(gif|png|jpg|css|js))$
+    static_files: public/\1
+    upload: public/.*\.(gif|png|jpg|css|js)$
+
+  - url: /.*
+    secure: always
+    redirect_http_response_code: 301
+    script: auto
+
+env_variables:
+  ## Put production environment variables here.
+  APP_KEY: base64:9XvYKJ8PlUCzMO+Tjpg/hobR+v9wxGAZOW6RydNBjbI=
+  APP_STORAGE: /tmp
+  VIEW_COMPILED_PATH: /tmp
+  SESSION_DRIVER: cookie
+  APP_NAME: "Taman Ayun"
+  DB_DATABASE: ar_vivi
+  DB_USERNAME: root
+  DB_PASSWORD: ar-vivi2020
+  DB_SOCKET: /cloudsql/ar-vivi-2020:asia-southeast1:arcevi
+  FILESYSTEM_DRIVER: gcs
+  GOOGLE_CLOUD_PROJECT_ID: ar-vivi-2020
+  GOOGLE_CLOUD_STORAGE_BUCKET: ar-bucket-vivi
