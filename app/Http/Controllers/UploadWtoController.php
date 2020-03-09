@@ -18,12 +18,12 @@ class UploadWtoController extends Controller
     }
 
     public function store(Request $request) {
+        /* LOCAL */
         $file = $request->file('wto_file');
-        // dd($file->getCLientOriginalName());
-        // Storage::disk('gcs')->put('test1', $file);
         Storage::disk('gcs')->putFileAs('wto', $file, $file->getCLientOriginalName());
+
         return redirect()->route('wto.index');
-        // dd($file);
+
     }
 
     public function serve() {

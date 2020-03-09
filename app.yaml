@@ -21,3 +21,6 @@ env_variables:
   DB_USERNAME: root
   DB_PASSWORD: ar-vivi2020
   DB_SOCKET: /cloudsql/ar-vivi-2020:asia-southeast1:arcevi
+  FILESYSTEM_DRIVER: gcs
+  GOOGLE_CLOUD_PROJECT_ID: ar-vivi-2020
+  GOOGLE_CLOUD_STORAGE_BUCKET: ar-bucket-vivi
