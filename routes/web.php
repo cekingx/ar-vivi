@@ -30,6 +30,9 @@ Route::middleware('auth')->group(function() {
     Route::get('/user-location/{user_location}', 'UserLocationController@show')->name('user-location.show');
     Route::delete('/user-location/{user_location}', 'UserLocationController@destroy')->name('user-location.delete');
     Route::post('/user-location/{user_location}/verify', 'UserLocationController@verify')->name('user-location.verify');
+
+    // Object AR
+    Route::resource('/objek-ar', 'ObjekARController');
 });
 
 // Route::resource('user-location', 'UserLocationController');

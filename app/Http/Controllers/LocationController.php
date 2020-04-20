@@ -61,6 +61,7 @@ class LocationController extends Controller
     public function show(Location $location)
     {
         $data = Location::find($location)->first();
+        // return $location;
         return view('pages.location.show')->with('lokasi', $data);
     }
 
@@ -122,5 +123,25 @@ class LocationController extends Controller
 
     public function api() {
         return Location::all();
+    }
+
+    public function object() {
+        return response([
+            [
+                'id' => 1,
+                'name' => 'teather',
+                'description' => 'teather di taman ayun'
+            ],
+            [
+                'id' => 2,
+                'name' => 'bale',
+                'description' => 'bale di taman ayun'
+            ],
+            [
+                'id' => 3,
+                'name' => 'PaduRaksa',
+                'description' => 'PaduRaksa di taman ayun'
+            ],
+        ]);
     }
 }
