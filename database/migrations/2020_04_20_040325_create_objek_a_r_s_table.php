@@ -17,6 +17,7 @@ class CreateObjekARSTable extends Migration
             $table->bigIncrements('id');
             $table->string('nama_objek', 255);
             $table->string('description', 255);
+            $table->string('url', 255);
             $table->timestamps();
         });
     }

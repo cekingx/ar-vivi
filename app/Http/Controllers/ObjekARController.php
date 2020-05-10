@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\ObjekAR;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 
 class ObjekARController extends Controller
@@ -16,7 +17,7 @@ class ObjekARController extends Controller
     {
         $data = ObjekAR::all();
 
-        return response($data);
+        return view('pages.objek-ar.index')->with('objekAR', $data);
     }
 
     /**
@@ -37,14 +38,18 @@ class ObjekARController extends Controller
      */
     public function store(Request $request)
     {
-        $objekAR = ObjekAR::create(
+        $objekAR = ObjekAR::make(
             $request->only([
                 'nama_objek',
                 'description'
             ])
         );
 
-        return redirect()->route('wto.index');
+        $file = $request->file('wto_file');
+        $path = Storage::disk('gcs')->putFileAs('wto', $file, $request->nama_objek);
+
+        return response(['path' => $path]);
+        /* return redirect()->route('wto.index'); */
     }
 
     /**
