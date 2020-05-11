@@ -40,7 +40,9 @@
                 <td>{{ $objek->description }}</td>
                 <td>{{ $objek->url }}</td>
                 <td>
-                  <a href="{{ route('objek-ar.edit', ['objek_ar' => $objek->id]) }}" class="btn btn-warning">
+                  {{-- <a href="{{ route('objek-ar.edit', ['objek_ar' => $objek->id]) }}" class="btn btn-warning"> --}}
+                  <a href="#" class="btn btn-warning">
+
                     <i class="fas fa-edit"></i>
                     <span>Edit</span>
                   </a>

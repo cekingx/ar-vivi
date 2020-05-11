@@ -47,9 +47,12 @@ class ObjekARController extends Controller
 
         $file = $request->file('wto_file');
         $path = Storage::disk('gcs')->putFileAs('wto', $file, $request->nama_objek);
+        $url = Storage::disk('gcs')->url($path);
+        $objekAR->url = $url;
+        $objekAR->save();
 
-        return response(['path' => $path]);
-        /* return redirect()->route('wto.index'); */
+        /* return $objekAR; */
+        return redirect()->route('objek-ar.index');
     }
 
     /**
@@ -104,6 +107,13 @@ class ObjekARController extends Controller
         $data = ObjekAR::find($objek_ar)->first();
         $data->delete();
 
-        return redirect()->route('wto.index');
+        return redirect()->route('objek-ar.index');
+    }
+
+    public function objekForApi()
+    {
+        $data = ObjekAR::all();
+
+        return $data; 
     }
 }
