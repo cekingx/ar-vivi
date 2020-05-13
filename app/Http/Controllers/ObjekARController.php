@@ -46,7 +46,7 @@ class ObjekARController extends Controller
         );
 
         $file = $request->file('wto_file');
-        $path = Storage::disk('gcs')->putFileAs('wto', $file, $request->nama_objek);
+        $path = Storage::disk('gcs')->putFileAs('wto', $file, $request->nama_objek . ".wto");
         $url = Storage::disk('gcs')->url($path);
         $objekAR->url = $url;
         $objekAR->save();
