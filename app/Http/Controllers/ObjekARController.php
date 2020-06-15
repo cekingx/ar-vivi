@@ -16,7 +16,8 @@ class ObjekARController extends Controller
     {
         $data = ObjekAR::all();
 
-        return response($data);
+        /* return response($data); */
+        return view('pages.objek-ar.index')->with(['objekAR' => $data]);
     }
 
     /**
