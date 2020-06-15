@@ -24,7 +24,7 @@ class UploadWtoController extends Controller
         $file = $request->file('wto_file');
         Storage::disk('gcs')->putFileAs('wto', $file, $file->getCLientOriginalName());
 
-        return redirect()->route('wto.index');
+        return redirect()->route('objek-ar.index');
 
     }
 
