@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\UserLocation;
 use App\Location;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class UserLocationController extends Controller
 {
@@ -48,10 +49,15 @@ class UserLocationController extends Controller
                 'longitude'
             ])
         );
-
         $location->image = "xxx";
         $location->save();
 
+        $file = $request->file('foto');
+        $filePath = Storage::disk('gcs')->put('foto', $file);
+        $url = Storage::disk('gcs')->url($filePath);
+
+        $location->image = $url;
+        $location->save();
         return redirect()->route('user-location.create')->with('status', 'Data berhasil disimpan');
     }
 

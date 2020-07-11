@@ -8,7 +8,7 @@
                 <div class="card-header">Input Lokasi Anda</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('user-location.store') }}">
+                    <form method="POST" action="{{ route('user-location.store') }}" enctype="multipart/form-data">
                         @csrf
 
                         {{-- Owner --}}
@@ -71,6 +71,15 @@
 
                           <div class="col-md-6">
                               <input id="longitude" type="text" class="form-control" name="longitude">
+                          </div>
+                        </div>
+
+                        {{-- Foto --}}
+                        <div class="form-group row">
+                          <label for="foto" class="col-md-4 col-form-label text-md-right">{{ __('Foto') }}</label>
+
+                          <div class="col-md-6">
+                              <input id="foto" type="file" class="form-control" name="foto">
                           </div>
                         </div>
 
