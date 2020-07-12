@@ -36,6 +36,12 @@
       <span>Location</span></a>
   </li>
 
+  <li class="nav-item">
+    <a class="nav-link" href="{{ route('user-location.index') }}">
+      <i class="fas fa-fw fa-map-marker-alt"></i>
+      <span>User Location</span></a>
+  </li>
+
   <!-- Nav Item - Tables -->
   <li class="nav-item active">
     <a class="nav-link" href="{{ route('wto.index') }}">
