@@ -24,9 +24,6 @@
             <tr>
               <th>No</th>
               <th>Name</th>
-              <th>Description</th>
-              <th>Latitude</th>
-              <th>Longitude</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -39,9 +36,6 @@
                     {{ $lokasi->name }}
                   </a>
                 </td>
-                <td>{{ $lokasi->description }}</td>
-                <td>{{ $lokasi->latitude }}</td>
-                <td>{{ $lokasi->longitude }}</td>
                 <td>
                   <a href="{{ route('location.edit', ['location' => $lokasi->id]) }}" class="btn btn-warning">
                     <i class="fas fa-edit"></i>

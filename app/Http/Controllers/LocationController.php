@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Location;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class LocationController extends Controller
 {
@@ -49,6 +50,13 @@ class LocationController extends Controller
         $location->image = "xxx";
         $location->save();
 
+        $file = $request->file('foto');
+        $filePath = Storage::disk('gcs')->put('foto', $file);
+        $url = Storage::disk('gcs')->url($filePath);
+
+        $location->image = $url;
+        $location->save();
+
         return redirect()->route('location.index');
     }
 
@@ -74,9 +82,7 @@ class LocationController extends Controller
     public function edit(Location $location)
     {
         $data = Location::find($location)->first();
-        // return view('locations.edit')->with('location', $data);
         return view('pages.location.edit')->with('location', $data);
-        // dd($data);
     }
 
     /**
@@ -93,6 +99,25 @@ class LocationController extends Controller
         $data->description = $request->description;
         $data->latitude = $request->latitude;
         $data->longitude = $request->longitude;
+        $data->save();
+
+        return redirect()->route('location.index');
+    }
+
+    public function editImage(Location $location) {
+        $data = Location::find($location)->first();
+        return view('pages.location.edit-image')->with('location', $data);
+    }
+
+    public function updateImage(Request $request, Location $location)
+    {
+        $data = Location::find($location)->first();
+
+        $file = $request->file('foto');
+        $filePath = Storage::disk('gcs')->put('foto', $file);
+        $url = Storage::disk('gcs')->url($filePath);
+
+        $data->image = $url;
         $data->save();
 
         return redirect()->route('location.index');

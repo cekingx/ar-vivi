@@ -34,6 +34,10 @@ Route::middleware('auth')->group(function() {
 
     // Object AR
     Route::resource('/objek-ar', 'ObjekARController');
+
+    // Location change image
+    Route::get('/location/edit-image/{location}', 'LocationController@editImage')->name('location.edit-image');
+    Route::put('/location/edit-image/{location}', 'LocationController@updateImage')->name('location.update-image');
 });
 
 // Route::resource('user-location', 'UserLocationController');

@@ -9,7 +9,7 @@
 
   <h1>Tambahkan Lokasi Baru</h1>
 
-  <form action="{{route('location.store')}}" method="post">
+  <form action="{{route('location.store')}}" method="post" enctype="multipart/form-data">
     @csrf
     <div class="form-group row">
       <label for="name" class="col-sm-2 col-form-label">Nama Objek</label>
@@ -39,6 +39,13 @@
       </div>
     </div>
     
+    <div class="form-group row">
+      <label for="foto" class="col-sm-2 col-form-label">Foto</label>
+      <div class="col-sm-10">
+        <input type="file" class="form-control" id="foto" name="foto">
+      </div>
+    </div>
+
     <button type="submit" class="btn btn-primary">Simpan</button>
   </form>
 
