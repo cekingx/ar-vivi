@@ -38,6 +38,9 @@
       <i class="fas fa-arrow-left"></i>
       <span>Back</span>
     </a>
+    <a href="{{ route('location.edit-image', ['location' => $lokasi->id]) }}" class="btn btn-secondary">
+      <span>Edit Image</span>
+    </a>
   </form>
 
 </div>
