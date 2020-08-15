@@ -18,4 +18,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::middleware('cors')->get('/location', 'LocationController@api');
-Route::middleware('cors')->get('/object', 'ObjekARController@index');
+Route::middleware('cors')->get('/object', 'ObjekARController@api');

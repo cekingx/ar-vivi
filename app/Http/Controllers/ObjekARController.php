@@ -102,4 +102,12 @@ class ObjekARController extends Controller
 
         return redirect()->route('wto.index');
     }
+
+    public function api()
+    {
+
+        $data = ObjekAR::all();
+
+        return response($data);
+    }
 }
