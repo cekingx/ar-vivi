@@ -6,5 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class ObjekAR extends Model
 {
-    protected $fillable = ['nama_objek', 'description'];
+    protected $fillable = [ 'nama', 
+                            'name', 
+                            'deskripsi',
+                            'description'];
 }

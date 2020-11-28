@@ -11,12 +11,22 @@
 
   <form>
     <div class="form-group row">
-      <div class="col-sm-2">Nama Objek</div>
+      <div class="col-sm-2">Nama Lokasi</div>
+      <div class="col-sm-10">{{ $lokasi->nama }}</div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-sm-2">Location Name (English)</div>
       <div class="col-sm-10">{{ $lokasi->name }}</div>
     </div>
     
     <div class="form-group row">
       <div class="col-sm-2">Deskripsi</div>
+      <div class="col-sm-10">{{ $lokasi->deskripsi }}</div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-sm-2">Description (English)</div>
       <div class="col-sm-10">{{ $lokasi->description }}</div>
     </div>
 

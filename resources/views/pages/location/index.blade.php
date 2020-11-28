@@ -33,7 +33,7 @@
                 <td>{{ $index + 1 }}</td>
                 <td>
                   <a href="{{ route('location.show', ['location' => $lokasi->id]) }}">
-                    {{ $lokasi->name }}
+                    {{ $lokasi->nama }}
                   </a>
                 </td>
                 <td>

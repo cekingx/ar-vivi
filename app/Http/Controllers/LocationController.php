@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Location;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Image;
 
 class LocationController extends Controller
 {
@@ -40,6 +41,8 @@ class LocationController extends Controller
     {
         $location = Location::make(
             $request->only([
+                'nama',
+                'deskripsi',
                 'name',
                 'description',
                 'latitude',
@@ -51,7 +54,9 @@ class LocationController extends Controller
         $location->save();
 
         $file = $request->file('foto');
-        $filePath = Storage::disk('gcs')->put('foto', $file);
+        $resizedFile = Image::make($file->getRealPath())->resize(150, 150)->encode('jpg')->rotate(270);
+        $filePath = 'foto/' . $location->name . '-' . $location->created_at->format('Ymd-His') . '.jpg';
+        Storage::disk('gcs')->put($filePath, $resizedFile);
         $url = Storage::disk('gcs')->url($filePath);
 
         $location->image = $url;
@@ -95,6 +100,8 @@ class LocationController extends Controller
     public function update(Request $request, Location $location)
     {
         $data = Location::find($location)->first();
+        $data->nama = $request->nama;
+        $data->deskripsi = $request->deskripsi;
         $data->name = $request->name;
         $data->description = $request->description;
         $data->latitude = $request->latitude;
@@ -114,7 +121,9 @@ class LocationController extends Controller
         $data = Location::find($location)->first();
 
         $file = $request->file('foto');
-        $filePath = Storage::disk('gcs')->put('foto', $file);
+        $resizedFile = Image::make($file->getRealPath())->resize(150, 150)->encode('jpg')->rotate(270);
+        $filePath = 'foto/' . $location->name . '-' . $location->created_at->format('Ymd-His') . '.jpg';
+        Storage::disk('gcs')->put($filePath, $resizedFile);
         $url = Storage::disk('gcs')->url($filePath);
 
         $data->image = $url;

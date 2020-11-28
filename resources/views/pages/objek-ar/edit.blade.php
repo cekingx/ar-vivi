@@ -12,20 +12,46 @@
   <form action="{{route('objek-ar.update', ['objek_ar' => $objekAR->id])}}" method="post">
     @csrf
     <div class="form-group row">
-      <label for="nama_objek" class="col-sm-2 col-form-label">Nama Objek</label>
+      <label for="nama" class="col-sm-2 col-form-label">Nama Objek</label>
       <div class="col-sm-10">
         <input 
           type="text" 
           class="form-control" 
-          id="nama_objek" 
-          name="nama_objek"
-          value="{{$objekAR->nama_objek}}"
+          id="nama" 
+          name="nama"
+          value="{{$objekAR->nama}}"
         >
       </div>
     </div>
 
     <div class="form-group row">
-      <label for="description" class="col-sm-2 col-form-label">Deskripsi</label>
+      <label for="name" class="col-sm-2 col-form-label">Object Name (English)</label>
+      <div class="col-sm-10">
+        <input 
+          type="text" 
+          class="form-control" 
+          id="name" 
+          name="name"
+          value="{{$objekAR->name}}"
+        >
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="deskripsi" class="col-sm-2 col-form-label">Deskripsi</label>
+      <div class="col-sm-10">
+        <input 
+          type="text" 
+          class="form-control" 
+          id="deskripsi" 
+          name="deskripsi"
+          value="{{$objekAR->deskripsi}}"
+        >
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="description" class="col-sm-2 col-form-label">Description (English)</label>
       <div class="col-sm-10">
         <input 
           type="text" 

@@ -15,7 +15,9 @@ class CreateObjekARSTable extends Migration
     {
         Schema::create('objek_a_r_s', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nama_objek', 255);
+            $table->string('nama', 255);
+            $table->string('name', 255);
+            $table->string('deskripsi', 255);
             $table->string('description', 255);
             $table->timestamps();
         });

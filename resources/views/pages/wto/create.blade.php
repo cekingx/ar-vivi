@@ -14,7 +14,7 @@
   <form action="{{route('upload.store')}}" method="post" enctype="multipart/form-data">
     @csrf
     <input type="file" name="wto_file" id="wto_file">
-    <button type="submit" class="btn btn-success">Next</button>
+    <button type="submit" class="btn btn-success">Simpan</button>
   </form>
 
 </div>

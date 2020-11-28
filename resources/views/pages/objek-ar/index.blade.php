@@ -26,7 +26,6 @@
             <tr>
               <th>No</th>
               <th>Nama Objek</th>
-              <th>Description</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -34,8 +33,11 @@
             @foreach ($objekAR as $index => $objek)    
               <tr>
                 <td>{{ $index + 1 }}</td>
-                <td>{{ $objek->nama_objek }}</td>
-                <td>{{ $objek->description }}</td>
+                <td>
+                  <a href="{{ route('objek-ar.show', ['objek_ar' => $objek->id]) }}">
+                    {{ $objek->nama }}
+                  </a>
+                </td>
                 <td>
                   <a href="{{ route('objek-ar.edit', ['objek_ar' => $objek->id]) }}" class="btn btn-warning">
                     <i class="fas fa-edit"></i>

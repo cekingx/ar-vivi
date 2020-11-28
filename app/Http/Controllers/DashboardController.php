@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Location;
+use App\ObjekAR;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -12,7 +13,13 @@ class DashboardController extends Controller
     // }
 
     public function index() {
-        $count = Location::all()->count();
-        return view('pages.dashboard')->with('count', $count);
+        $count_location= Location::all()->count();
+        $count_objek_ar = ObjekAR::all()->count();
+        return view('pages.dashboard')->with(
+            [
+                'count_location' => $count_location,
+                'count_objek_ar' => $count_objek_ar
+            ]
+        );
     }
 }

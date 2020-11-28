@@ -40,7 +40,9 @@ class ObjekARController extends Controller
     {
         $objekAR = ObjekAR::create(
             $request->only([
-                'nama_objek',
+                'nama',
+                'name',
+                'deskripsi',
                 'description'
             ])
         );
@@ -56,7 +58,9 @@ class ObjekARController extends Controller
      */
     public function show(ObjekAR $objek_ar)
     {
-        //
+        $data = ObjekAR::find($objek_ar)->first();
+        // return $data;
+        return view('pages.objek-ar.show')->with('objekAR', $data);
     }
 
     /**
@@ -82,7 +86,9 @@ class ObjekARController extends Controller
     public function update(Request $request, ObjekAR $objek_ar)
     {
         $data = ObjekAR::find($objek_ar)->first();
-        $data->nama_objek = $request->nama_objek;
+        $data->nama = $request->nama;
+        $data->name = $request->name;
+        $data->deskripsi = $request->deskripsi;
         $data->description = $request->description;
         $data->save();
 

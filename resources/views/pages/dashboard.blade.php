@@ -39,11 +39,11 @@
       <span>Location</span></a>
   </li>
   
-  <li class="nav-item">
+  <!-- <li class="nav-item">
     <a class="nav-link" href="{{ route('user-location.index') }}">
       <i class="fas fa-fw fa-map-marker-alt"></i>
       <span>User Location</span></a>
-  </li>
+  </li> -->
 
   <!-- Nav Item - Tables -->
   <li class="nav-item">
@@ -78,7 +78,7 @@
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
               <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Banyak Lokasi</div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $count }}</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $count_location }}</div>
             </div>
           </div>
         </div>
@@ -92,7 +92,7 @@
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
               <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Banyak Objek</div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $count_objek_ar }}</div>
             </div>
           </div>
         </div>
