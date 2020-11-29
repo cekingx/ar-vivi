@@ -9,5 +9,6 @@ class ObjekAR extends Model
     protected $fillable = [ 'nama', 
                             'name', 
                             'deskripsi',
-                            'description'];
+                            'description',
+                            'audio'];
 }

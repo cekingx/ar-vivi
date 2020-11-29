@@ -9,7 +9,7 @@
 
   <h1>Tambahkan Objek AR Baru</h1>
 
-  <form action="{{route('objek-ar.store')}}" method="post">
+  <form action="{{route('objek-ar.store')}}" method="post" enctype="multipart/form-data">
     @csrf
     <div class="form-group row">
       <label for="nama" class="col-sm-2 col-form-label">Nama Objek</label>
@@ -36,6 +36,13 @@
       <label for="description" class="col-sm-2 col-form-label">Description (English)</label>
       <div class="col-sm-10">
         <input type="text" class="form-control" id="description" name="description">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="audio" class="col-sm-2 col-form-label">Audio</label>
+      <div class="col-sm-10">
+        <input type="file" class="form-control" id="audio" name="audio">
       </div>
     </div>
     

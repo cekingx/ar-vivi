@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\ObjekAR;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\File;
 
 class ObjekARController extends Controller
 {
@@ -38,7 +40,10 @@ class ObjekARController extends Controller
      */
     public function store(Request $request)
     {
-        $objekAR = ObjekAR::create(
+        $raw_file = $request->file('audio');
+        $file = new File($raw_file);
+
+        $objekAR = ObjekAR::make(
             $request->only([
                 'nama',
                 'name',
@@ -46,6 +51,15 @@ class ObjekARController extends Controller
                 'description'
             ])
         );
+        $objekAR->audio = Storage::disk('gcs')->url('audio/sample.mp3');
+        $objekAR->save();
+
+        $fileName = $objekAR->nama . $objekAR->id . '.' . $raw_file->getClientOriginalExtension();
+        $filePath = 'audio/' . $fileName;
+        Storage::disk('gcs')->putFileAs('audio', $file, $fileName);
+        $audioUrl = Storage::disk('gcs')->url($filePath);
+        $objekAR->audio = $audioUrl;
+        $objekAR->save();
 
         return redirect()->route('wto.index');
     }
